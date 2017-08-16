@@ -44,8 +44,41 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="247" height="445"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="daK-ON-ItY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="247" height="385"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8u-6Y-71R">
+                                                    <rect key="frame" x="86" y="388" width="74" height="51"/>
+                                                    <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tdc-8N-RcN">
+                                                    <rect key="frame" x="102.5" y="212.5" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="daK-ON-ItY" firstAttribute="leading" secondItem="mK5-ac-hzr" secondAttribute="leading" id="KZT-9Y-OJh"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="A8u-6Y-71R" secondAttribute="bottom" constant="-2" id="Kay-kc-Vfq"/>
+                                            <constraint firstItem="A8u-6Y-71R" firstAttribute="leading" secondItem="mK5-ac-hzr" secondAttribute="leadingMargin" constant="78" id="QCY-SW-N4O"/>
+                                            <constraint firstItem="A8u-6Y-71R" firstAttribute="centerX" secondItem="daK-ON-ItY" secondAttribute="centerX" constant="-0.5" id="QVH-xT-dh2"/>
+                                            <constraint firstAttribute="trailing" secondItem="daK-ON-ItY" secondAttribute="trailing" id="QiZ-Fe-t7N"/>
+                                            <constraint firstItem="daK-ON-ItY" firstAttribute="top" secondItem="mK5-ac-hzr" secondAttribute="top" id="Zco-0a-gHt"/>
+                                            <constraint firstItem="Tdc-8N-RcN" firstAttribute="centerX" secondItem="mK5-ac-hzr" secondAttribute="centerX" id="bTY-cf-pkt"/>
+                                            <constraint firstAttribute="bottom" secondItem="daK-ON-ItY" secondAttribute="bottom" constant="60" id="cAY-Qt-Obq"/>
+                                            <constraint firstItem="Tdc-8N-RcN" firstAttribute="centerY" secondItem="mK5-ac-hzr" secondAttribute="centerY" id="lDO-H6-72K"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="daK-ON-ItY" id="1Fm-Hm-v2B"/>
+                                            <outlet property="purchasedLabel" destination="Tdc-8N-RcN" id="8me-JD-e7x"/>
+                                            <outlet property="titleLabel" destination="A8u-6Y-71R" id="qcH-68-xJ6"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mcI-7n-fU2">

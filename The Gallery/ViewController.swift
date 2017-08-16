@@ -24,9 +24,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     updateGallery()
     
     if gallery.count == 0 {
-      createArt(title: "Hello", productIdentifier: "", imageName: "", purchased: true)
-      createArt(title: "Hello", productIdentifier: "", imageName: "", purchased: true)
-      createArt(title: "Hello", productIdentifier: "", imageName: "", purchased: true)
+      createArt(title: "Fish", productIdentifier: "", imageName: "fish.jpeg", purchased: true)
+      createArt(title: "Horse", productIdentifier: "", imageName: "horse.jpeg", purchased: true)
+      createArt(title: "Kittens", productIdentifier: "", imageName: "kittens.jpeg", purchased: false)
+      createArt(title: "Puppy", productIdentifier: "", imageName: "puppy.jpeg", purchased: false)
+
       updateGallery()
       self.collectionView.reloadData()
     }
@@ -64,7 +66,28 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "artCell", for: indexPath)
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "artCell", for: indexPath) as! ArtCollectionViewCell
+    let art = self.gallery[indexPath.row]
+    
+    cell.imageView.image = UIImage(named: art.imageName!)
+    cell.titleLabel.text = art.title!
+    
+    for subview in cell.imageView.subviews {
+      subview.removeFromSuperview()
+    }
+    
+    if art.purchased == true {
+      cell.purchasedLabel.isHidden = true
+    } else {
+      cell.purchasedLabel.isHidden = false
+      
+      let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+      let blurView = UIVisualEffectView(effect: blurEffect)
+      cell.layoutIfNeeded()
+      blurView.frame = cell.imageView.bounds
+      cell.imageView.addSubview(blurView)
+    }
+    
     return cell
   }
   
