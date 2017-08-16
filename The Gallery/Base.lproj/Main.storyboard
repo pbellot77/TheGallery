@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="The_Gallery" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,66 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Gallery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyR-fH-Afm">
+                                <rect key="frame" x="74" y="30" width="228" height="95"/>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yUQ-wN-gsh">
+                                <rect key="frame" x="0.0" y="125" width="375" height="502"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="10" id="AFe-47-eUw">
+                                    <size key="itemSize" width="247" height="445"/>
+                                    <size key="headerReferenceSize" width="30" height="0.0"/>
+                                    <size key="footerReferenceSize" width="30" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="artCell" id="mK5-ac-hzr" customClass="ArtCollectionViewCell" customModule="The_Gallery" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="28.5" width="247" height="445"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="247" height="445"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mcI-7n-fU2">
+                                    <rect key="frame" x="0.0" y="0.0" width="30" height="502"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="b73-me-Avk">
+                                    <rect key="frame" x="277" y="0.0" width="30" height="502"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMB-LY-Aqj">
+                                <rect key="frame" x="16" y="629" width="53" height="30"/>
+                                <state key="normal" title="Restore"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HMB-LY-Aqj" secondAttribute="bottom" constant="8" id="IQf-e1-r1F"/>
+                            <constraint firstAttribute="trailing" secondItem="yUQ-wN-gsh" secondAttribute="trailing" id="O3Q-RZ-wSV"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="HMB-LY-Aqj" secondAttribute="leading" id="UgG-Z4-wi0"/>
+                            <constraint firstItem="eyR-fH-Afm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hQu-De-aDN"/>
+                            <constraint firstItem="yUQ-wN-gsh" firstAttribute="top" secondItem="eyR-fH-Afm" secondAttribute="bottom" id="iGi-Qj-uZt"/>
+                            <constraint firstItem="eyR-fH-Afm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="viO-se-LX3"/>
+                            <constraint firstItem="yUQ-wN-gsh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xJQ-kt-q6X"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yUQ-wN-gsh" secondAttribute="bottom" constant="40" id="xy9-c4-i3c"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="yUQ-wN-gsh" id="kZb-HQ-L3B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>
