@@ -14,6 +14,8 @@
 		BA0512841F44AF39009FA4A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0512831F44AF39009FA4A0 /* Assets.xcassets */; };
 		BA0512871F44AF39009FA4A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA0512851F44AF39009FA4A0 /* LaunchScreen.storyboard */; };
 		BA05128F1F44C728009FA4A0 /* ArtCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA05128E1F44C728009FA4A0 /* ArtCollectionViewCell.swift */; };
+		BA0512961F44D260009FA4A0 /* Art+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0512941F44D260009FA4A0 /* Art+CoreDataClass.swift */; };
+		BA0512971F44D260009FA4A0 /* Art+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0512951F44D260009FA4A0 /* Art+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		BA0512861F44AF39009FA4A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA0512881F44AF39009FA4A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA05128E1F44C728009FA4A0 /* ArtCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtCollectionViewCell.swift; sourceTree = "<group>"; };
+		BA0512941F44D260009FA4A0 /* Art+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Art+CoreDataClass.swift"; path = "../Art+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BA0512951F44D260009FA4A0 /* Art+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Art+CoreDataProperties.swift"; path = "../Art+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				BA0512791F44AF39009FA4A0 /* AppDelegate.swift */,
+				BA0512941F44D260009FA4A0 /* Art+CoreDataClass.swift */,
+				BA0512951F44D260009FA4A0 /* Art+CoreDataProperties.swift */,
 				BA05127B1F44AF39009FA4A0 /* ViewController.swift */,
 				BA05128E1F44C728009FA4A0 /* ArtCollectionViewCell.swift */,
 				BA05127D1F44AF39009FA4A0 /* Main.storyboard */,
@@ -145,6 +151,8 @@
 			files = (
 				BA05128F1F44C728009FA4A0 /* ArtCollectionViewCell.swift in Sources */,
 				BA05127C1F44AF39009FA4A0 /* ViewController.swift in Sources */,
+				BA0512961F44D260009FA4A0 /* Art+CoreDataClass.swift in Sources */,
+				BA0512971F44D260009FA4A0 /* Art+CoreDataProperties.swift in Sources */,
 				BA05127A1F44AF39009FA4A0 /* AppDelegate.swift in Sources */,
 				BA0512821F44AF39009FA4A0 /* The_Gallery.xcdatamodeld in Sources */,
 			);
