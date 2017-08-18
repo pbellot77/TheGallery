@@ -15,6 +15,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
   @IBOutlet weak var collectionView: UICollectionView!
   
   var gallery = [Art]()
+  var products = [SKProduct]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -47,6 +48,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
   func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
     print("Products ready: \(response.products.count)")
     print("Products not ready: \(response.invalidProductIdentifiers.count)")
+    self.products = response.products
+    self.collectionView.reloadData()
   }
   
   func createArt(title: String, productIdentifier: String, imageName: String, purchased: Bool) {
@@ -60,6 +63,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
       art.imageName = imageName
       art.purchased = NSNumber(value: purchased) as! Bool
     }
+    
     do{
       try context.save()
     } catch {}
@@ -101,6 +105,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
       cell.layoutIfNeeded()
       blurView.frame = cell.imageView.bounds
       cell.imageView.addSubview(blurView)
+      
+      for product in self.products {
+        if product.productIdentifier == art.productIdentifier {
+          
+          let formatter = NumberFormatter()
+          formatter.numberStyle = .currency
+          formatter.locale = product.priceLocale
+          if let price = formatter.string(from: product.price){
+            cell.purchasedLabel.text = "Buy for \(price)"
+          }
+        }
+      }
     }
     
     return cell
