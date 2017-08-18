@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import StoreKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SKProductsRequestDelegate {
 
   @IBOutlet weak var collectionView: UICollectionView!
   
@@ -26,12 +27,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     if gallery.count == 0 {
       createArt(title: "Fish", productIdentifier: "", imageName: "fish.jpeg", purchased: true)
       createArt(title: "Horse", productIdentifier: "", imageName: "horse.jpeg", purchased: true)
-      createArt(title: "Kittens", productIdentifier: "", imageName: "kittens.jpeg", purchased: false)
-      createArt(title: "Puppy", productIdentifier: "", imageName: "puppy.jpeg", purchased: false)
+      createArt(title: "Kittens", productIdentifier: "com.patrickBellot.The_Gallery.kittens", imageName: "kittens.jpeg", purchased: false)
+      createArt(title: "Puppy", productIdentifier: "com.patrickBellot.The_Gallery", imageName: "puppy.jpeg", purchased: false)
 
       updateGallery()
       self.collectionView.reloadData()
     }
+    
+    requestProducts()
+  }
+  
+  func requestProducts() {
+    let ids: Set<String> = ["com.patrickBellot.The_Gallery.kittens", "com.patrickBellot.The_Gallery"]
+    let productsRequest = SKProductsRequest(productIdentifiers: ids)
+    productsRequest.delegate = self
+    productsRequest.start()
+  }
+  
+  func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+    print("Products ready: \(response.products.count)")
+    print("Products not ready: \(response.invalidProductIdentifiers.count)")
   }
   
   func createArt(title: String, productIdentifier: String, imageName: String, purchased: Bool) {
