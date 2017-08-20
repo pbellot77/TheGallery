@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import StoreKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SKProductsRequestDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SKProductsRequestDelegate, SKPaymentTransactionObserver {
 
   @IBOutlet weak var collectionView: UICollectionView!
   
@@ -50,6 +50,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     print("Products not ready: \(response.invalidProductIdentifiers.count)")
     self.products = response.products
     self.collectionView.reloadData()
+  }
+  
+  func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    print("Hello there")
   }
   
   func createArt(title: String, productIdentifier: String, imageName: String, purchased: Bool) {
@@ -120,6 +124,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let art = self.gallery[indexPath.row]
+    
+    if !art.purchased == true {
+      for product in self.products {
+        if product.productIdentifier == art.productIdentifier{
+          SKPaymentQueue.default().add(self)
+          let payment = SKPayment(product: product)
+          SKPaymentQueue.default().add(payment)
+        }
+      }
+    }
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
