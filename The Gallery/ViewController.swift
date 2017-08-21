@@ -52,8 +52,53 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     self.collectionView.reloadData()
   }
   
+  @IBAction func restoreTapped(_ sender: Any) {
+    SKPaymentQueue.default().restoreCompletedTransactions()
+  }
+
+  
   func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-    print("Hello there")
+    for transaction in transactions {
+      switch transaction.transactionState {
+      case .purchased:
+        print("Purchased")
+        unlockArt(productIdentifier: transaction.payment.productIdentifier)
+        SKPaymentQueue.default().finishTransaction(transaction)
+        break
+      case .failed:
+        print("Failed")
+        SKPaymentQueue.default().finishTransaction(transaction)
+        break
+      case .restored:
+        print("Restored")
+        unlockArt(productIdentifier: transaction.payment.productIdentifier)
+        SKPaymentQueue.default().finishTransaction(transaction)
+        break
+      case .purchasing:
+        print("Purchasing")
+        break
+      case .deferred:
+        print("Deferred")
+        break
+      }
+    }
+  }
+  
+  func unlockArt(productIdentifier: String) {
+    
+    for art in self.gallery {
+      if art.productIdentifier == productIdentifier {
+        art.purchased = true
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        do{
+          try context.save()
+        } catch {}
+        self.collectionView.reloadData()
+      }
+    }
   }
   
   func createArt(title: String, productIdentifier: String, imageName: String, purchased: Bool) {
